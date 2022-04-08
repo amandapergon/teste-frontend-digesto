@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
 
 import { SearchBarContainer, LogoContainer } from "./styles";
+import { ResultContext } from "../../contexts/result";
 
 import DigestoLogo from "../../assets/DigestoLogo.png";
 
@@ -17,32 +18,15 @@ const schema = yup.object().shape({
     ),
 });
 
-const token = "2a13ae70-a928-4fc8-ad08-91132322a603";
-
 const SearchBar = () => {
+  const { handleSearch } = useContext(ResultContext);
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
+    // formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const handleSearch = ({ cnj }) => {
-    axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://op.digesto.com.br/api/tribproc/${cnj}?tipo_numero=8`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-    reset();
-  };
 
   return (
     <SearchBarContainer>
@@ -56,7 +40,6 @@ const SearchBar = () => {
             {...register("cnj")}
           />
           <button type='submit'>Buscar</button>
-          {/* <p>{errors.cnj?.message}</p> */}
         </div>
       </form>
     </SearchBarContainer>
