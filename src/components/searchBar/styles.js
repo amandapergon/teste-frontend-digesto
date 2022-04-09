@@ -1,27 +1,47 @@
 import styled from "styled-components";
 
 export const SearchBarContainer = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 25vh;
   background-color: #fcf2f5;
 
   .input-container {
+    align-items: center;
     margin-top: 2vh;
-    height: 2.5rem;
-    width: 20vw;
+    height: fit-content;
+    width: fit-content;
+    flex-direction: column;
     display: flex;
-    flex-wrap: nowrap;
+    margin: 15px auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    .input-container {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
   input {
-    margin-top: 7vh;
     height: 2.5rem;
-    width: 20vw;
+    width: 80%;
     border: 2px solid #5f0c16;
     border-radius: 3px;
     display: block;
+    margin: 5px;
+  }
+
+  form {
+    position: relative;
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: 0.6px;
   }
 
   input:focus {
@@ -35,10 +55,8 @@ export const SearchBarContainer = styled.div`
   }
 
   button {
-    margin-top: 7vh;
     height: 2.5rem;
-    width: 50%;
-    margin-left: 0.5rem;
+    margin: 0 auto;
     border: 2px solid #5f0c16;
     border-radius: 3px;
     color: #efefef;
@@ -49,12 +67,16 @@ export const SearchBarContainer = styled.div`
   button:hover {
     background-color: #840303;
   }
+
+  @media screen and (min-width: 768px) {
+    .input-container {
+      display: flex;
+      flex-direction: row;
+    }
+  }
 `;
 
 export const LogoContainer = styled.img`
-  width: 14vw;
-  height: 7vh;
-  position: absolute;
-  left: 20%;
-  transform: translateX(150%);
+  width: 15rem;
+  margin: 10px auto;
 `;

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { appendErrors, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -23,15 +23,21 @@ const SearchBar = () => {
   const {
     register,
     handleSubmit,
-    // formState: { errors },
+    formState: { errors },
+    resetField,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const resetInput = ({ cnj }) => {
+    handleSearch({ cnj });
+    resetField("cnj");
+  };
+
   return (
     <SearchBarContainer>
       <LogoContainer src={DigestoLogo} />
-      <form onSubmit={handleSubmit(handleSearch)}>
+      <form onSubmit={handleSubmit(resetInput)}>
         <div class='input-container'>
           <input
             class='input-class'
@@ -41,6 +47,8 @@ const SearchBar = () => {
           />
           <button type='submit'>Buscar</button>
         </div>
+
+        <p className='error-message'>{errors.cnj?.message}</p>
       </form>
     </SearchBarContainer>
   );

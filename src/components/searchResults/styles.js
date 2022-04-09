@@ -1,10 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: #5f0c16;
-  height: 100vh;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   .top-div {
     width: 100%;
@@ -19,7 +17,6 @@ export const Container = styled.div`
   .bottom-div {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     color: #fcf2f5;
     font-size: 16px;

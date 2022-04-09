@@ -7,8 +7,7 @@ export const ResultContext = createContext({});
 const ResultProvider = ({ children }) => {
   const [result, setResult] = useState({});
   const [showResult, setShowResult] = useState(false);
-  const { reset } = useForm({});
-  const token = "ffa57f89-c29d-4341-a05e-d30872961782";
+  const { reset } = useForm();
 
   const handleSearch = ({ cnj }) => {
     axios
@@ -16,7 +15,7 @@ const ResultProvider = ({ children }) => {
         `https://cors-anywhere.herokuapp.com/https://op.digesto.com.br/api/tribproc/${cnj}?tipo_numero=8`,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
           },
         }
       )
@@ -25,6 +24,7 @@ const ResultProvider = ({ children }) => {
         console.log(result);
       })
       .catch((error) => console.log(error));
+    reset();
   };
 
   return (
