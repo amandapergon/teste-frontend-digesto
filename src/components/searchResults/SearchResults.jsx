@@ -14,18 +14,9 @@ const SearchResult = () => {
 
   return (
     <Container>
-      <BarLoader color='#fcf2f5' css={overrRide} loading={showMessage} />
-      {result.status_op ? (
-        <p
-          style={{
-            color: "#fcf2f5",
-            fontSize: "20px",
-            textAlign: "center",
-            marginTop: "3rem",
-          }}>
-          Processo não encontrado.
-        </p>
-      ) : (
+      {showMessage ? (
+        <BarLoader color='#fcf2f5' css={overrRide} />
+      ) : !result.status_op ? (
         <>
           <div className='top-div'>
             <div className='number'>
@@ -37,46 +28,49 @@ const SearchResult = () => {
           </div>
           <div className='bottom-div'>
             <div className='parties'>
-              <ul>
-                {result.partes &&
-                  result.partes.map((party, index) => {
-                    if (party[10]) {
-                      return (
-                        <li
-                          key={index}
-                          style={{
-                            lineHeight: "20px",
-                          }}>
-                          <h3
+              <div style={{ padding: "15px" }}>
+                <ul>
+                  {result.partes &&
+                    result.partes.map((party, index) => {
+                      if (party[10]) {
+                        return (
+                          <li
+                            key={index}
                             style={{
-                              textTransform: "capitalize",
+                              lineHeight: "20px",
+                              padding: "10px",
                             }}>
-                            {party[8].toLowerCase()}
-                          </h3>
-                          <h4
-                            style={{
-                              textTransform: "capitalize",
-                            }}>
-                            {party[2].toLowerCase()}
-                          </h4>
-                          <h5>Advogados:</h5>
-                          {party[9].map((lawyer, index) => {
-                            return (
-                              <p
-                                key={index}
-                                style={{
-                                  textTransform: "capitalize",
-                                }}>
-                                {lawyer[1].toLowerCase()}
-                              </p>
-                            );
-                          })}
-                        </li>
-                      );
-                    }
-                  })}
-              </ul>
-              <div className='defendant'>
+                            <h3
+                              style={{
+                                textTransform: "capitalize",
+                              }}>
+                              {party[8].toLowerCase()}
+                            </h3>
+                            <h4
+                              style={{
+                                textTransform: "capitalize",
+                              }}>
+                              {party[2].toLowerCase()}
+                            </h4>
+                            <h5>Advogados:</h5>
+                            {party[9].map((lawyer, index) => {
+                              return (
+                                <p
+                                  key={index}
+                                  style={{
+                                    textTransform: "capitalize",
+                                  }}>
+                                  {lawyer[1].toLowerCase()}
+                                </p>
+                              );
+                            })}
+                          </li>
+                        );
+                      }
+                    })}
+                </ul>
+              </div>
+              <div style={{ padding: "15px" }}>
                 <ul>
                   {result.partes &&
                     result.partes.map((party, index) => {
@@ -86,6 +80,7 @@ const SearchResult = () => {
                             key={index}
                             style={{
                               lineHeight: "20px",
+                              padding: "10px",
                             }}>
                             <h3
                               style={{
@@ -127,9 +122,10 @@ const SearchResult = () => {
                         key={index}
                         style={{
                           lineHeight: "20px",
-                          maxWidth: "50%",
+                          maxWidth: "60%",
+                          padding: "5px",
                         }}>
-                        <p>{mov[0]}</p>
+                        <p style={{ fontSize: "20px" }}>{mov[0]}</p>
                         <p>{mov[1]}</p>
                         <p>{mov[2]}</p>
                       </li>
@@ -139,6 +135,16 @@ const SearchResult = () => {
             </div>
           </div>
         </>
+      ) : (
+        <p
+          style={{
+            color: "#fcf2f5",
+            fontSize: "20px",
+            textAlign: "center",
+            marginTop: "3rem",
+          }}>
+          Processo não encontrado.
+        </p>
       )}
     </Container>
   );

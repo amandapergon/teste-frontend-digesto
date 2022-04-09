@@ -32,17 +32,13 @@ export const Container = styled.div`
 
   }
 
-  .defendant {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   .movs {
     padding: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     color: #fcf2f5;
     font-size: 16px;
+    min-width: 80%;
   }
 }
 `;
