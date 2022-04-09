@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { appendErrors, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -14,12 +14,13 @@ const schema = yup.object().shape({
     .required("Por favor, insira um CNJ")
     .matches(
       "[0-9]{7}-[0-9]{2}.[0-9]{4}.[0-9]{1}.[0-9]{2}.[0-9]{4}",
-      "Formato inválido. Verifique o número CNJ"
+      "Formato inválido. Verifique o CNJ"
     ),
 });
 
 const SearchBar = () => {
-  const { handleSearch } = useContext(ResultContext);
+  const { handleSearch, handleSearchingMessage } = useContext(ResultContext);
+
   const {
     register,
     handleSubmit,
@@ -29,15 +30,16 @@ const SearchBar = () => {
     resolver: yupResolver(schema),
   });
 
-  const resetInput = ({ cnj }) => {
+  const handleClick = ({ cnj }) => {
     handleSearch({ cnj });
     resetField("cnj");
+    handleSearchingMessage();
   };
 
   return (
     <SearchBarContainer>
       <LogoContainer src={DigestoLogo} />
-      <form onSubmit={handleSubmit(resetInput)}>
+      <form onSubmit={handleSubmit(handleClick)}>
         <div class='input-container'>
           <input
             class='input-class'
@@ -47,7 +49,6 @@ const SearchBar = () => {
           />
           <button type='submit'>Buscar</button>
         </div>
-
         <p className='error-message'>{errors.cnj?.message}</p>
       </form>
     </SearchBarContainer>

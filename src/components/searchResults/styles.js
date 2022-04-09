@@ -3,35 +3,46 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 75vh;
+  height: fit-content;
 
   .top-div {
-    width: 100%;
+    max-width: 100vw;
     padding: 30px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: flex-end;
     color: #fcf2f5;
-    font-size: 25px;
+    font-size: 20px;
+    line-height: 30px;
   }
 
   .bottom-div {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .parties {
+    padding: 15px;
+    width: 50%;
+    color: #fcf2f5;
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+
+  .defendant {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .movs {
+    padding: 15px;
     display: flex;
     justify-content: space-around;
     color: #fcf2f5;
     font-size: 16px;
-
-    .movs {
-      padding: 15px;
-    }
-
-    .parties {
-      padding: 15px;
-    }
   }
 }
-`;
-
-export const Movs = styled.div`
-  padding: 10px;
 `;

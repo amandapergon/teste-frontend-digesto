@@ -1,13 +1,11 @@
 import { useState, createContext } from "react";
-import { useForm } from "react-hook-form";
 import axios from "axios";
 
 export const ResultContext = createContext({});
 
 const ResultProvider = ({ children }) => {
   const [result, setResult] = useState({});
-  const [showResult, setShowResult] = useState(false);
-  const { reset } = useForm();
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleSearch = ({ cnj }) => {
     axios
@@ -21,10 +19,16 @@ const ResultProvider = ({ children }) => {
       )
       .then((response) => {
         setResult(response.data);
+        setShowMessage(false);
         console.log(result);
       })
-      .catch((error) => console.log(error));
-    reset();
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleSearchingMessage = () => {
+    setShowMessage(true);
   };
 
   return (
@@ -32,8 +36,8 @@ const ResultProvider = ({ children }) => {
       value={{
         result,
         setResult,
-        showResult,
-        setShowResult,
+        showMessage,
+        handleSearchingMessage,
         handleSearch,
       }}>
       {children}

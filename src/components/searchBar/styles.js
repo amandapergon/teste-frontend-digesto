@@ -14,9 +14,8 @@ export const SearchBarContainer = styled.div`
     margin-top: 2vh;
     height: fit-content;
     width: fit-content;
-    flex-direction: column;
     display: flex;
-    margin: 15px auto;
+    margin: 15px 3px 15px 0;
   }
 
   @media screen and (min-width: 768px) {
@@ -28,7 +27,7 @@ export const SearchBarContainer = styled.div`
 
   input {
     height: 2.5rem;
-    width: 80%;
+    width: 100%;
     border: 2px solid #5f0c16;
     border-radius: 3px;
     display: block;
@@ -42,6 +41,8 @@ export const SearchBarContainer = styled.div`
   .error-message {
     position: absolute;
     bottom: 0.6px;
+    color: #5f0c16;
+    margin-left: 0.8rem;
   }
 
   input:focus {
