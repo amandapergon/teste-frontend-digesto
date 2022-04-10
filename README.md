@@ -48,10 +48,10 @@ que armazena o token para autenticação. Basta inserir o token após o sinal "=
    reconheço a importância e já estou estudando jest e "@testing-library/react". Me comprometo a aprimorar
    meus conhecimentos.
 
-![Página inicial](teste-frontend-digesto/prints/initialpage.png)
-![Formato inválido](teste-frontend-digesto/prints/formValidation2.png)
-![Campo de busca vazio](teste-frontend-digesto/prints/formValidation1.png)
-![Buscando processos](teste-frontend-digesto/prints/searchingcases.png)
-![Processo não encontrado](teste-frontend-digesto/prints/caseNotFound.png)
-![Exibição dos dados](teste-frontend-digesto/prints/caseDetails1.png)
-![exibição dos dados](teste-frontend-digesto/prints/caseDetails2.png)
+![Página inicial](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/initialpage.png)
+![Formato inválido](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/formValidation2.png)
+![Campo de busca vazio](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/formValidation1.png)
+![Buscando processos](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/searchingcases.png)
+![Processo não encontrado](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/caseNotFound.png)
+![Exibição dos dados](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/caseDetails1.png)
+![Exibição dos dados](https://github.com/amandapergon/teste-frontend-digesto/blob/main/prints/caseDetails2.png)
