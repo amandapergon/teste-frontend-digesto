@@ -42,6 +42,7 @@ const SearchBar = () => {
       <form onSubmit={handleSubmit(handleClick)}>
         <div class='input-container'>
           <input
+            data-testid='input'
             class='input-class'
             placeholder='Número CNJ'
             type='text'

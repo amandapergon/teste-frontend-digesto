@@ -6,7 +6,6 @@ export const ResultContext = createContext({});
 const ResultProvider = ({ children }) => {
   const [result, setResult] = useState({});
   const [showMessage, setShowMessage] = useState(false);
-
   const handleSearch = ({ cnj }) => {
     axios
       .get(

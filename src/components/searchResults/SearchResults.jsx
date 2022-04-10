@@ -15,9 +15,9 @@ const SearchResult = () => {
   return (
     <Container>
       {showMessage ? (
-        <BarLoader color='#fcf2f5' css={overrRide} />
+        <BarLoader data-testid='barloader' color='#fcf2f5' css={overrRide} />
       ) : !result.status_op ? (
-        <>
+        <div data-testid='resultdisplay'>
           <div className='top-div'>
             <div className='number'>
               {result.numero && <p>Número do processo: {result.numero}</p>}
@@ -134,9 +134,10 @@ const SearchResult = () => {
               </ul>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <p
+          data-testid='notfound'
           style={{
             color: "#fcf2f5",
             fontSize: "20px",
